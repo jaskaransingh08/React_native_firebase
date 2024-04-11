@@ -1,6 +1,6 @@
-import {  signInWithEmailAndPassword } from "firebase/auth";
+import {  sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet, Alert } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet, Alert, Pressable } from "react-native";
 import {  auth } from "../Firebase/Firebase";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 
@@ -11,14 +11,12 @@ export default function Login() {
 
   
     const handleLogin = async () => {
-        
+
             await signInWithEmailAndPassword(auth, username, password)
-                .then((userCredential) => {
-                    
+                .then((userCredential) => {                   
                     const user = userCredential.user;
 					console.log(user);
-                   navigation.navigate("Home")  
-                   
+                   navigation.navigate("Home")                    
                 })
                 .catch((error:any) => {
                     const errorCode = error.code;
@@ -26,7 +24,13 @@ export default function Login() {
                     Alert.alert('Registration Failed', errorMessage);
                 });
 			}
-	
+	const handleforgot=async()=>{
+       
+          await sendPasswordResetEmail(auth, username);
+          console.log("Password reset email sent")
+          alert("reset link sent succesfully")
+        
+    }
     return (
         <>
             <View style={styles.container}>
@@ -45,7 +49,21 @@ export default function Login() {
                     value={password}
                     onChangeText={text => setPassword(text)}
                 />
-                <Button title="Login" onPress={handleLogin} />
+                <View style={{flexDirection:"row"}}>
+                    <View style={{marginHorizontal:10}}>
+                    <Button title="Login" onPress={handleLogin} />
+                    </View>
+                <Button title="Forgot Password" onPress={handleforgot} />
+
+                </View>
+             
+                <View style={{flexDirection:"row",margin:20}}>
+                <Text style={{fontSize:20}}>Don't have an account?  </Text>
+               <Pressable  onPress={()=>navigation.navigate("Register")} >
+               <Text style={{fontSize:20,color:"blue",textDecorationLine:"underline"}}>Register Here</Text>
+               </Pressable>
+            </View>
+            
             </View>
 
         </>

@@ -22,7 +22,7 @@ export default function Register() {
                   {
                     text: 'OK', 
                     onPress: () => {
-                        navigation.navigate("login");
+                        navigation.navigate("Login");
 
                     },
                   },
