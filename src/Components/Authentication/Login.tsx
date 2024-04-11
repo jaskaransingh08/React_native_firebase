@@ -1,4 +1,4 @@
-import {  sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
+import {  signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet, Alert, Pressable } from "react-native";
 import {  auth } from "../Firebase/Firebase";
@@ -25,10 +25,8 @@ export default function Login() {
                 });
 			}
 	const handleforgot=async()=>{
-       
-          await sendPasswordResetEmail(auth, username);
-          console.log("Password reset email sent")
-          alert("reset link sent succesfully")
+       navigation.navigate("Reset Password")
+          
         
     }
     return (
