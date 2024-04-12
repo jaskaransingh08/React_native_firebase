@@ -1,8 +1,12 @@
 import { Text, View } from "react-native"
+import Menu from "../Screens/Menu"
+import { Provider } from "react-redux"
+import { store } from "../Screens/Store"
 export default function Blank() {
     return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            <Text>This is the home page</Text>
-        </View>
+<Provider store={store}>
+        <Menu></Menu>
+
+    </Provider>
     )
 }

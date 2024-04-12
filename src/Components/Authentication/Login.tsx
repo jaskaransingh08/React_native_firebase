@@ -16,7 +16,9 @@ export default function Login() {
                 .then((userCredential) => {                   
                     const user = userCredential.user;
 					console.log(user);
-                   navigation.navigate("Home")                    
+                    setPassword('')
+                   navigation.navigate("Home")    
+                                   
                 })
                 .catch((error:any) => {
                     const errorCode = error.code;
