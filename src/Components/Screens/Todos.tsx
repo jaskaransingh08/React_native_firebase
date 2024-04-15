@@ -96,7 +96,8 @@ export default function Todos() {
     
 
     return (
-        <GestureHandlerRootView style={{ flex: 1 }}>
+        <GestureHandlerRootView style={{ flex: 1 }}
+        >
             <View style={styles.listview}>
                 <Text style={styles.text}>Todos List</Text>
             </View>

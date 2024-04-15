@@ -21,7 +21,7 @@ export default function ForgotPassword() {
     return (
         <>
             <View style={styles.container}>
-                <Text style={styles.title}>Forgot password</Text>
+                <Text style={styles.title}>Change Your Password</Text>
                 <TextInput
                     style={styles.input}
                     inputMode="email"

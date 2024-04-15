@@ -47,7 +47,7 @@ const ProfileScreen = () => {
         
             <TouchableOpacity onPress={()=>{navigation.navigate("Reset Password")}}>
             <View style={styles.function1}>
-            <Text style={styles.texta}>Change </Text>
+            <Text style={styles.texta}>Change Password</Text>
             </View>
 
             </TouchableOpacity>
